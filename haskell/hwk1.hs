@@ -12,10 +12,10 @@ doubleEveryOther :: Num a => [a] -> [a]
 doubleEveryOther = reverse . doubleFromLeft . reverse
   where doubleFromLeft = zipWith (*) (cycle [1,2])
 
-sumDigits :: [Integer] -> Integer
+sumDigits :: (Integral a, Show a) => [a] -> a
 sumDigits = sum . concatMap toDigits
 
-validate :: Integer -> Bool
+validate :: (Integral a, Show a) => a -> Bool
 validate = divides 10 . sumDigits . doubleEveryOther . toDigits
   where divides d n = n `mod` d == 0
 
