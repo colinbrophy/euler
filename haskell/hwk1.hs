@@ -17,3 +17,17 @@ doubleEveryOther :: Num a => [a] -> [a]
 -- Much easier to work with lists from the left in haskell (infinte lists etc)
 doubleEveryOther = reverse . doubleFromLeft . reverse
   where doubleFromLeft = zipWith (*) (cycle [1,2])
+
+sumDigits :: [Integer] -> Integer
+-- sumDigits [] = 0
+-- sumDigits (x:xs) = x + sumDigits xs
+sumDigits = sum . concatMap toDigits
+
+divides :: Integral a => a -> a -> Bool
+divides d n = n `mod` d == 0
+
+validate :: Integer -> Bool
+validate n = divides 10 $ sumDouble $ toDigits n
+  where sumDouble = sumDigits . doubleEveryOther
+
+
