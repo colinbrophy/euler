@@ -2,8 +2,9 @@ import Data.Char (digitToInt)
 
 toDigits :: (Integral a, Show a) => a -> [a]
 toDigits x 
-  | x > 0 = map (fromIntegral . digitToInt) . show $ x 
+  | x > 0 = map digitToNum $ show x
   | otherwise = []
+  where digitToNum = fromIntegral . digitToInt
 
 toDigitsRev :: (Integral a, Show a) => a -> [a]
 toDigitsRev = reverse . toDigits
