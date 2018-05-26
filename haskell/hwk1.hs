@@ -25,5 +25,5 @@ type Peg = String
 type Move = (Peg, Peg)
 
 hannoi :: Integer -> Peg -> Peg -> Peg -> [Move]
-hannoi 0 a b c = []
+hannoi 0 _ _ _ = []
 hannoi n a b c = hannoi (n - 1) a c b ++ [(a,b)] ++ hannoi (n - 1) c b a
