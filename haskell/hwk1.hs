@@ -19,7 +19,9 @@ sumDigits = sum . concatMap toDigits
 
 validate :: (Integral a, Show a) => a -> Bool
 validate = divides 10 . sumDigits . doubleEveryOther . toDigits
-  where divides d n = n `mod` d == 0
+
+divides :: Integral a => a -> a -> Bool
+divides d n = n `mod` d == 0
 
 type Peg = String
 type Move = (Peg, Peg)
